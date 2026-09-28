@@ -16,10 +16,10 @@ Sistema de gerenciamento de tarefas desenvolvido com uma arquitetura moderna e e
 
 ## Funcionalidades
 
-**Autenticação e autorização** para registro de usuários, login e proteção de endpoints
-**Gerenciamento de tarefas** através de CRUD funcional
-**Gerenciamento de prioridades e status**
-**Gerenciamento de categorias** 
-**Histórico** persistente de todas as tarefas armazenadas*
-**Validações robustas**
-**API REST** bem estruturada
+- **Autenticação e autorização** para registro de usuários, login e proteção de endpoints
+- **Gerenciamento de tarefas** através de CRUD funcional
+- **Gerenciamento de prioridades e status**
+- **Gerenciamento de categorias** 
+- **Histórico** persistente de todas as tarefas armazenadas*
+- **Validações robustas**
+- **API REST** bem estruturada
