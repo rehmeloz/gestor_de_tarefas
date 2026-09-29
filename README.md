@@ -1,4 +1,4 @@
-# Gerenciador de Tarefas
+# API de Gestão de Tarefas
 
 Sistema de gerenciamento de tarefas desenvolvido com uma arquitetura moderna e escalável. A aplicação permite criar, organizar e acompanhar tarefas com prioridades, categorias, datas de vencimento e validações robustas em tempo real.
 
