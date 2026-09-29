@@ -17,6 +17,7 @@ Log.Logger = new LoggerConfiguration()
 builder.Host.UseSerilog();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite(connectionString));
 
@@ -91,6 +92,8 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
+app.MapGet("/", () => Results.Redirect("/swagger")).ExcludeFromDescription();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -99,6 +102,8 @@ if (app.Environment.IsDevelopment())
         c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gerenciador de Tarefas API v1");
     });
 }
+
+app.UseHttpsRedirection();
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
