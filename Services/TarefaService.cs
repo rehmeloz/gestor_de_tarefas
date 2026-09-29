@@ -9,9 +9,9 @@ namespace gerenciador_de_tarefas.Services;
 public class TarefaService : ITarefaService
 {
     private readonly AppDbContext _context;
-    private readonly ILogger _logger;
+    private readonly ILogger<TarefaService> _logger;
 
-    public TarefaService(AppDbContext context, ILogger logger)
+    public TarefaService(AppDbContext context, ILogger<TarefaService> logger)
     {
         _context = context;
         _logger = logger;
@@ -33,9 +33,13 @@ public class TarefaService : ITarefaService
         _context.Tarefas.Add(tarefa);
         await _context.SaveChangesAsync();
 
-        _logger.LogInformation($"Tarefa criada: {tarefa.Id} para usuário {usuarioId}!");
+        var tarefaCriada = await _context.Tarefas
+            .Include(t => t.Categoria)
+            .FirstOrDefaultAsync(t => t.Id == tarefa.Id);
 
-        return MapearParaResponse(tarefa);
+        _logger.LogInformation($"Tarefa criada: {tarefa.Id} para usuário {usuarioId}");
+
+        return MapearParaResponse(tarefaCriada!);
     }
 
     public async Task<List<TarefaResponse>> ListarTarefasAsync(int usuarioId, int? status = null, int? categoria = null)
